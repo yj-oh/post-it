@@ -1,0 +1,25 @@
+/node_modules
+/build
+
+yarn-debug.log*
+yarn-error.log*
+
+.eslintcache
+
+### JetBrains WebStorm ###
+.idea
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+### MacOS ###
+.DS_Store
