@@ -10,5 +10,6 @@ export type Board = {
 
 export type BoardState = {
 	list: Board[];
+	activation: Board;
 	result: string | null;
 };

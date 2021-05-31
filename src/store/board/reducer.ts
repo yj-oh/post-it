@@ -1,9 +1,10 @@
 import { BoardState, BoardAction } from './types';
 import { createReducer } from 'typesafe-actions';
-import { LIST, ADD } from './actions';
+import { LIST, ADD, GET_ACTIVATION, SET_ACTIVATION } from './actions';
 
 const initialState: BoardState = {
 	list: [],
+	activation: { id: 0, name: '' },
 	result: null,
 };
 
@@ -17,6 +18,14 @@ const board = createReducer<BoardState, BoardAction>(initialState, {
 		...state,
 		activation: action.payload,
 		result: action.payload.id.toString(),
+	}),
+	[GET_ACTIVATION]: (state, action) => ({
+		...state,
+		activation: action.payload,
+	}),
+	[SET_ACTIVATION]: (state, action) => ({
+		...state,
+		activation: action.payload,
 	}),
 });
 

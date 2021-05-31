@@ -24,3 +24,15 @@ export function postBoard(name: string): Board {
 
 	return newBoard;
 }
+
+// 활성 보드 조회
+export function getActivationBoard(): Board {
+	const strActivation = localStorage.getItem('activation');
+	return strActivation ? JSON.parse(strActivation) : { id: 0, name: '' };
+}
+
+// 활성 보드 변경
+export function postActivationBoard(board: Board) {
+	localStorage.setItem('activation', JSON.stringify(board));
+	return board;
+}
