@@ -1,7 +1,8 @@
 import React from 'react';
+import PostItBoardApp from './containers/PostItBoardApp';
 
-const App = () => {
-    return null;
+const App: React.FC = () => {
+	return <PostItBoardApp />;
 };
 
 export default App;
