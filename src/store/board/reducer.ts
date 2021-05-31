@@ -1,6 +1,6 @@
 import { BoardState, BoardAction } from './types';
 import { createReducer } from 'typesafe-actions';
-import { LIST } from './actions';
+import { LIST, ADD } from './actions';
 
 const initialState: BoardState = {
 	list: [],
@@ -12,6 +12,11 @@ const board = createReducer<BoardState, BoardAction>(initialState, {
 		...state,
 		list: payload,
 		result: null,
+	}),
+	[ADD]: (state, action) => ({
+		...state,
+		activation: action.payload,
+		result: action.payload.id.toString(),
 	}),
 });
 
