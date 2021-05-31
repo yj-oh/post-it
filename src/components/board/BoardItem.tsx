@@ -1,5 +1,5 @@
 import React from 'react';
-import { Board } from '../store/board';
+import { Board } from '../../store/board';
 
 type BoardItemProps = {
 	board: Board;

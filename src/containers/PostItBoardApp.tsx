@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import BoardList from '../components/BoardList';
-import Board from '../components/Board';
+import BoardList from '../components/board/BoardList';
+import Board from '../components/board/Board';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Board as BoardType } from '../store/board';
+import { Board as BoardType } from '../../store/board';
 import BoardName from './BoardName';
 
 const Container = styled.div`

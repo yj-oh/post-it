@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Formik, Field } from 'formik';
-import { Board, modifyBoard } from '../store/board';
+import { Board, modifyBoard } from '../../store/board';
 import { useDispatch } from 'react-redux';
 import styled, { css } from 'styled-components';
 

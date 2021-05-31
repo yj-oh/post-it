@@ -1,7 +1,7 @@
 import React from 'react';
 import { GoPlus } from 'react-icons/all';
 import styled from 'styled-components';
-import { Board } from '../store/board';
+import { Board } from '../../store/board';
 import BoardItem from './BoardItem';
 
 const Container = styled.div`
