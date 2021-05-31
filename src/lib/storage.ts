@@ -37,3 +37,16 @@ export function postActivationBoard(board: Board) {
 	localStorage.setItem('activation', JSON.stringify(board));
 	return board;
 }
+
+// 보드 수정
+export function patchBoard(board: Board) {
+	const boardList = getBoardList();
+
+	const newBoardList = boardList.map((item: Board) =>
+		item.id === board.id ? { ...item, name: board.name } : item,
+	);
+	localStorage.setItem(BOARD_ITEM_NAME, JSON.stringify(newBoardList));
+	postActivationBoard(board);
+
+	return board;
+}
