@@ -21,6 +21,7 @@ export function postBoard(name: string): Board {
 		BOARD_ITEM_NAME,
 		JSON.stringify([...boardList, newBoard]),
 	);
+	postActivationBoard(newBoard);
 
 	return newBoard;
 }
