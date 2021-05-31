@@ -1,6 +1,8 @@
 import { Board } from '../store/board';
+import { PostIt } from '../store/postIt';
 
 const BOARD_ITEM_NAME = 'boardList';
+const POST_IT_ITEM_NAME = 'postItList';
 
 // 보드 목록 조회
 export function getBoardList() {
@@ -49,4 +51,12 @@ export function patchBoard(board: Board) {
 	postActivationBoard(board);
 
 	return board;
+}
+
+// 포스트잇 목록 조회
+export function getPostItList(boardId: number): PostIt[] {
+	const strList = localStorage.getItem(POST_IT_ITEM_NAME);
+	const postItList = strList ? JSON.parse(strList) : [];
+
+	return postItList.filter((postIt: PostIt) => postIt.boardId === boardId);
 }
