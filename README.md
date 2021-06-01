@@ -1,6 +1,7 @@
 # 📒 post-it
 - 브라우저에서 동작하는 simple Post-it Board
 - using localStorage
+- https://yj-oh.github.io/post-it
 
 ## 🔧 기능 명세
 - [X] 브라우저 상에서 동작
