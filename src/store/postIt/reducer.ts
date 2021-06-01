@@ -1,6 +1,6 @@
 import { PostItState, PostItAction } from './types';
 import { createReducer } from 'typesafe-actions';
-import { LIST, ADD, MODIFY } from './actions';
+import { LIST, ADD, MODIFY, REMOVE } from './actions';
 
 const initialState: PostItState = {
 	list: [],
@@ -20,6 +20,10 @@ const postIt = createReducer<PostItState, PostItAction>(initialState, {
 	[MODIFY]: (state, action) => ({
 		...state,
 		result: action.payload.id.toString(),
+	}),
+	[REMOVE]: (state, action) => ({
+		...state,
+		result: action.payload.toString(),
 	}),
 });
 

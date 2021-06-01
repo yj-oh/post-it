@@ -91,3 +91,18 @@ export function putPostIt(postIt: PostIt): PostIt {
 
 	return postIt;
 }
+
+// 포스트잇 삭제
+export function deletePostIt(id: number): number {
+	const postItList = getPostItListAll();
+
+	const removeIndex = postItList
+		.map(function (item: PostIt) {
+			return item.id;
+		})
+		.indexOf(id);
+	postItList.splice(removeIndex, 1);
+	localStorage.setItem(POST_IT_ITEM_NAME, JSON.stringify(postItList));
+
+	return id;
+}
