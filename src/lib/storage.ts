@@ -79,3 +79,15 @@ export function postPostIt(postIt: PostIt): PostIt {
 	);
 	return postIt;
 }
+
+// 포스트잇 수정
+export function putPostIt(postIt: PostIt): PostIt {
+	const postItList = getPostItListAll();
+
+	const newList = postItList.map((item: PostIt) =>
+		item.id === postIt.id ? { ...postIt } : item,
+	);
+	localStorage.setItem(POST_IT_ITEM_NAME, JSON.stringify(newList));
+
+	return postIt;
+}
