@@ -5,7 +5,7 @@ const BOARD_ITEM_NAME = 'boardList';
 const POST_IT_ITEM_NAME = 'postItList';
 
 // 보드 목록 조회
-export function getBoardList() {
+export function getBoardList(): Board[] {
 	const strBoardList = localStorage.getItem(BOARD_ITEM_NAME);
 	return strBoardList ? JSON.parse(strBoardList) : [];
 }
@@ -35,13 +35,13 @@ export function getActivationBoard(): Board {
 }
 
 // 활성 보드 변경
-export function postActivationBoard(board: Board) {
+export function postActivationBoard(board: Board): Board {
 	localStorage.setItem('activation', JSON.stringify(board));
 	return board;
 }
 
 // 보드 수정
-export function patchBoard(board: Board) {
+export function patchBoard(board: Board): Board {
 	const boardList = getBoardList();
 
 	const newBoardList = boardList.map((item: Board) =>
