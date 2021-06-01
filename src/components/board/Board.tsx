@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import { Board as BoardType } from '../../store/board';
 import { addPostIt, PostIt as PostItType } from '../../store/postIt';
@@ -27,21 +27,39 @@ type BoardProps = {
 function Board({ board, postItList }: BoardProps) {
 	const dispatch = useDispatch();
 
+	const addNewPostIt = useCallback(
+		(x: number = 100, y: number = 100) => {
+			if (board.id < 1) return;
+
+			const newPostIt = {
+				id: 0,
+				boardId: board.id,
+				title: '새 포스트잇',
+				content: '',
+				position: { x: x, y: y },
+				size: { width: 200, height: 200 },
+				isOpen: true,
+				zIndex: 1,
+			};
+			dispatch(addPostIt(newPostIt));
+		},
+		[dispatch, board.id],
+	);
+
+	useEffect(() => {
+		function onKeyDown(e: KeyboardEvent) {
+			if ((e.ctrlKey || e.metaKey) && e.altKey && e.code === 'KeyN') {
+				addNewPostIt();
+			}
+		}
+		document.addEventListener('keydown', onKeyDown);
+	}, [addNewPostIt]);
+
 	function onDoubleClick(e: React.MouseEvent<HTMLDivElement>) {
 		const { pageX: x, pageY: y } = e;
 		const clientRect = e.currentTarget.getBoundingClientRect();
 
-		const newPostIt = {
-			id: 0,
-			boardId: board.id,
-			title: '새 포스트잇',
-			content: '',
-			position: { x: x - clientRect.left, y: y },
-			size: { width: 200, height: 200 },
-			isOpen: true,
-			zIndex: 1,
-		};
-		dispatch(addPostIt(newPostIt));
+		addNewPostIt(x - clientRect.left, y);
 	}
 
 	return (
