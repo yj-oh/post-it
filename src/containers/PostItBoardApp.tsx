@@ -8,7 +8,7 @@ import { Board as BoardType } from '../store/board';
 import {
 	addBoard,
 	getActivation,
-	getList,
+	getList as getBoardList,
 	setActivation,
 } from '../store/board';
 
@@ -22,13 +22,13 @@ function PostItBoardApp() {
 	const board = useSelector((state: RootState) => state.board);
 
 	useEffect(() => {
-		dispatch(getList());
+		dispatch(getBoardList());
 		dispatch(getActivation());
 	}, [dispatch]);
 
 	useEffect(() => {
 		if (board.result) {
-			dispatch(getList());
+			dispatch(getBoardList());
 		}
 	}, [dispatch, board.result]);
 
