@@ -53,10 +53,15 @@ export function patchBoard(board: Board) {
 	return board;
 }
 
+// 포스트잇 전체 목록 조회
+function getPostItListAll(): PostIt[] {
+	const strList = localStorage.getItem(POST_IT_ITEM_NAME);
+	return strList ? JSON.parse(strList) : [];
+}
+
 // 포스트잇 목록 조회
 export function getPostItList(boardId: number): PostIt[] {
-	const strList = localStorage.getItem(POST_IT_ITEM_NAME);
-	const postItList = strList ? JSON.parse(strList) : [];
+	const postItList = getPostItListAll();
 
 	return postItList.filter((postIt: PostIt) => postIt.boardId === boardId);
 }
