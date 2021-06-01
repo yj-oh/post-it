@@ -65,3 +65,17 @@ export function getPostItList(boardId: number): PostIt[] {
 
 	return postItList.filter((postIt: PostIt) => postIt.boardId === boardId);
 }
+
+// 포스트잇 단 건 저장
+export function postPostIt(postIt: PostIt): PostIt {
+	const postItList = getPostItListAll();
+	const length = postItList.length;
+
+	postIt.id = length > 0 ? postItList[length - 1].id + 1 : 1;
+
+	localStorage.setItem(
+		POST_IT_ITEM_NAME,
+		JSON.stringify([...postItList, postIt]),
+	);
+	return postIt;
+}
